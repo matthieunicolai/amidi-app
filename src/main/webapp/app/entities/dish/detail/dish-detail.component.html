@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dish">
+      <h2 data-cy="dishDetailsHeading"><span jhiTranslate="amidiappApp.dish.detail.title">Dish</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dish.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.dishName">Dish Name</span></dt>
+        <dd>
+          <span>{{ dish.dishName }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.dishDescription">Dish Description</span></dt>
+        <dd>
+          <span>{{ dish.dishDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.dishPrice">Dish Price</span></dt>
+        <dd>
+          <span>{{ dish.dishPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.dishDate">Dish Date</span></dt>
+        <dd>
+          <span>{{ dish.dishDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.dishPictureName">Dish Picture Name</span></dt>
+        <dd>
+          <span>{{ dish.dishPictureName }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.dishPictureUrl">Dish Picture Url</span></dt>
+        <dd>
+          <span>{{ dish.dishPictureUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.dishPictureAlt">Dish Picture Alt</span></dt>
+        <dd>
+          <span>{{ dish.dishPictureAlt }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.isDailyDish">Is Daily Dish</span></dt>
+        <dd>
+          <span>{{ dish.isDailyDish }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.isAvailable">Is Available</span></dt>
+        <dd>
+          <span>{{ dish.isAvailable }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="dish.restaurant">
+            <a [routerLink]="['/restaurant', dish.restaurant?.id, 'view']">{{ dish.restaurant?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dish.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="dish.restaurant">
+            <a [routerLink]="['/restaurant', dish.restaurant?.id, 'view']">{{ dish.restaurant?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/dish', dish.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

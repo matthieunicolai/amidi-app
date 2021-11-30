@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="picture">
+      <h2 data-cy="pictureDetailsHeading"><span jhiTranslate="amidiappApp.picture.detail.title">Picture</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ picture.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.picture.pictureName">Picture Name</span></dt>
+        <dd>
+          <span>{{ picture.pictureName }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.picture.pictureUrl">Picture Url</span></dt>
+        <dd>
+          <span>{{ picture.pictureUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.picture.pictureAlt">Picture Alt</span></dt>
+        <dd>
+          <span>{{ picture.pictureAlt }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.picture.isLogo">Is Logo</span></dt>
+        <dd>
+          <span>{{ picture.isLogo }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.picture.isDisplayed">Is Displayed</span></dt>
+        <dd>
+          <span>{{ picture.isDisplayed }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.picture.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="picture.restaurant">
+            <a [routerLink]="['/restaurant', picture.restaurant?.id, 'view']">{{ picture.restaurant?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.picture.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="picture.restaurant">
+            <a [routerLink]="['/restaurant', picture.restaurant?.id, 'view']">{{ picture.restaurant?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/picture', picture.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "amidiappApp": {
+    "hedgeprod": {
+      "home": {
+        "title": "Hedgeprods",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Hedgeprod",
+        "createOrEditLabel": "Create or edit a Hedgeprod",
+        "search": "Search for Hedgeprod",
+        "notFound": "No Hedgeprods found"
+      },
+      "created": "A new Hedgeprod is created with identifier {{ param }}",
+      "updated": "A Hedgeprod is updated with identifier {{ param }}",
+      "deleted": "A Hedgeprod is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Hedgeprod {{ id }}?"
+      },
+      "detail": {
+        "title": "Hedgeprod"
+      },
+      "id": "ID",
+      "hName": "H Name",
+      "hSurname": "H Surname",
+      "hRole": "H Role",
+      "hEmail": "H Email",
+      "hPhoneNumber": "H Phone Number",
+      "isActivated": "Is Activated"
+    }
+  }
+}

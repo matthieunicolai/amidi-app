@@ -1,0 +1,36 @@
+{
+  "amidiappApp": {
+    "dish": {
+      "home": {
+        "title": "Dishes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Dish",
+        "createOrEditLabel": "Create or edit a Dish",
+        "search": "Search for Dish",
+        "notFound": "No Dishes found"
+      },
+      "created": "A new Dish is created with identifier {{ param }}",
+      "updated": "A Dish is updated with identifier {{ param }}",
+      "deleted": "A Dish is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dish {{ id }}?"
+      },
+      "detail": {
+        "title": "Dish"
+      },
+      "id": "ID",
+      "dishName": "Dish Name",
+      "dishDescription": "Dish Description",
+      "dishPrice": "Dish Price",
+      "dishDate": "Dish Date",
+      "dishPictureName": "Dish Picture Name",
+      "dishPictureUrl": "Dish Picture Url",
+      "dishPictureAlt": "Dish Picture Alt",
+      "isDailyDish": "Is Daily Dish",
+      "isAvailable": "Is Available",
+      "dishTag": "Dish Tag",
+      "restaurant": "Restaurant",
+      "restaurant": "Restaurant"
+    }
+  }
+}

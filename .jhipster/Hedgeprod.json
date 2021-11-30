@@ -1,0 +1,46 @@
+{
+  "name": "Hedgeprod",
+  "fields": [
+    {
+      "fieldName": "hName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hSurname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hRole",
+      "fieldType": "HedgeprodRole",
+      "fieldValues": "ADMIN,DEV,DEMO",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hEmail",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hPhoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActivated",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "hedgeprod",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211130142904"
+}

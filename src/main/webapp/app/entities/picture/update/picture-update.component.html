@@ -1,0 +1,158 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-picture-heading" data-cy="PictureCreateUpdateHeading" jhiTranslate="amidiappApp.picture.home.createOrEditLabel">
+        Create or edit a Picture
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.picture.pictureName" for="field_pictureName">Picture Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pictureName"
+            id="field_pictureName"
+            data-cy="pictureName"
+            formControlName="pictureName"
+          />
+          <div *ngIf="editForm.get('pictureName')!.invalid && (editForm.get('pictureName')!.dirty || editForm.get('pictureName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pictureName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.picture.pictureUrl" for="field_pictureUrl">Picture Url</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pictureUrl"
+            id="field_pictureUrl"
+            data-cy="pictureUrl"
+            formControlName="pictureUrl"
+          />
+          <div *ngIf="editForm.get('pictureUrl')!.invalid && (editForm.get('pictureUrl')!.dirty || editForm.get('pictureUrl')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pictureUrl')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.picture.pictureAlt" for="field_pictureAlt">Picture Alt</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pictureAlt"
+            id="field_pictureAlt"
+            data-cy="pictureAlt"
+            formControlName="pictureAlt"
+          />
+          <div *ngIf="editForm.get('pictureAlt')!.invalid && (editForm.get('pictureAlt')!.dirty || editForm.get('pictureAlt')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pictureAlt')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.picture.isLogo" for="field_isLogo">Is Logo</label>
+          <input type="checkbox" class="form-check" name="isLogo" id="field_isLogo" data-cy="isLogo" formControlName="isLogo" />
+          <div *ngIf="editForm.get('isLogo')!.invalid && (editForm.get('isLogo')!.dirty || editForm.get('isLogo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('isLogo')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.picture.isDisplayed" for="field_isDisplayed">Is Displayed</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isDisplayed"
+            id="field_isDisplayed"
+            data-cy="isDisplayed"
+            formControlName="isDisplayed"
+          />
+          <div *ngIf="editForm.get('isDisplayed')!.invalid && (editForm.get('isDisplayed')!.dirty || editForm.get('isDisplayed')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('isDisplayed')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.picture.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsSharedCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.picture.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsSharedCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

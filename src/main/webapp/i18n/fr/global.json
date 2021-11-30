@@ -7,6 +7,14 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
+        "hedgeprod": "Hedgeprod",
+        "restaurant": "Restaurant",
+        "client": "Client",
+        "proUser": "Pro User",
+        "picture": "Picture",
+        "dish": "Dish",
+        "dishTag": "Dish Tag",
+        "location": "Location",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

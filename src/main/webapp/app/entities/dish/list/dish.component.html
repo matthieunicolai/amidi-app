@@ -1,0 +1,147 @@
+<div>
+  <h2 id="page-heading" data-cy="DishHeading">
+    <span jhiTranslate="amidiappApp.dish.home.title">Dishes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="amidiappApp.dish.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-dish"
+        [routerLink]="['/dish/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="amidiappApp.dish.home.createLabel"> Create a new Dish </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form name="searchForm" class="form-inline">
+        <div class="input-group w-100 mt-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="currentSearch"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="{{ 'amidiappApp.dish.home.search' | translate }}"
+          />
+
+          <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+            <fa-icon icon="search"></fa-icon>
+          </button>
+
+          <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="dishes?.length === 0">
+    <span jhiTranslate="amidiappApp.dish.home.notFound">No dishes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="dishes && dishes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="reset()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dishName">
+            <span jhiTranslate="amidiappApp.dish.dishName">Dish Name</span> <fa-icon *ngIf="!currentSearch" icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dishDescription">
+            <span jhiTranslate="amidiappApp.dish.dishDescription">Dish Description</span>
+            <fa-icon *ngIf="!currentSearch" icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dishPrice">
+            <span jhiTranslate="amidiappApp.dish.dishPrice">Dish Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dishDate">
+            <span jhiTranslate="amidiappApp.dish.dishDate">Dish Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dishPictureName">
+            <span jhiTranslate="amidiappApp.dish.dishPictureName">Dish Picture Name</span>
+            <fa-icon *ngIf="!currentSearch" icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dishPictureUrl">
+            <span jhiTranslate="amidiappApp.dish.dishPictureUrl">Dish Picture Url</span>
+            <fa-icon *ngIf="!currentSearch" icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dishPictureAlt">
+            <span jhiTranslate="amidiappApp.dish.dishPictureAlt">Dish Picture Alt</span>
+            <fa-icon *ngIf="!currentSearch" icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isDailyDish">
+            <span jhiTranslate="amidiappApp.dish.isDailyDish">Is Daily Dish</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isAvailable">
+            <span jhiTranslate="amidiappApp.dish.isAvailable">Is Available</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="restaurant.id">
+            <span jhiTranslate="amidiappApp.dish.restaurant">Restaurant</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="restaurant.id">
+            <span jhiTranslate="amidiappApp.dish.restaurant">Restaurant</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let dish of dishes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/dish', dish.id, 'view']">{{ dish.id }}</a>
+          </td>
+          <td>{{ dish.dishName }}</td>
+          <td>{{ dish.dishDescription }}</td>
+          <td>{{ dish.dishPrice }}</td>
+          <td>{{ dish.dishDate | formatMediumDatetime }}</td>
+          <td>{{ dish.dishPictureName }}</td>
+          <td>{{ dish.dishPictureUrl }}</td>
+          <td>{{ dish.dishPictureAlt }}</td>
+          <td>{{ dish.isDailyDish }}</td>
+          <td>{{ dish.isAvailable }}</td>
+          <td>
+            <div *ngIf="dish.restaurant">
+              <a [routerLink]="['/restaurant', dish.restaurant?.id, 'view']">{{ dish.restaurant?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dish.restaurant">
+              <a [routerLink]="['/restaurant', dish.restaurant?.id, 'view']">{{ dish.restaurant?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/dish', dish.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/dish', dish.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(dish)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

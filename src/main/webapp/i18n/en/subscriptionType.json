@@ -1,0 +1,10 @@
+{
+  "amidiappApp": {
+    "SubscriptionType": {
+      "null": "",
+      "SILVER": "SILVER",
+      "GOLD": "GOLD",
+      "PLATINIUM": "PLATINIUM"
+    }
+  }
+}

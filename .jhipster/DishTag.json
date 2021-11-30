@@ -1,0 +1,29 @@
+{
+  "name": "DishTag",
+  "fields": [
+    {
+      "fieldName": "dishTag",
+      "fieldType": "FoodType",
+      "fieldValues": "VEGAN,VEGETARIEN,VIANDE,FAITMAISON,SANSGLUTEN,POISSON",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "dish",
+      "otherEntityRelationshipName": "dishTag",
+      "relationshipName": "dish"
+    }
+  ],
+  "entityTableName": "dish_tag",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211130142910"
+}

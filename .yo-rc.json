@@ -42,7 +42,9 @@
     "clientTheme": "none",
     "clientThemeVariant": "",
     "reactive": false,
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["Hedgeprod", "Restaurant", "Client", "ProUser", "Picture", "Dish", "DishTag", "Location"],
+    "lastLiquibaseTimestamp": 1638282551000
   },
   "git-provider": "GitHub",
   "git-company": "matthieunicolai",

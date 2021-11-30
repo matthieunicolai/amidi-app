@@ -1,0 +1,123 @@
+<div>
+  <h2 id="page-heading" data-cy="PictureHeading">
+    <span jhiTranslate="amidiappApp.picture.home.title">Pictures</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="amidiappApp.picture.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-picture"
+        [routerLink]="['/picture/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="amidiappApp.picture.home.createLabel"> Create a new Picture </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form name="searchForm" class="form-inline">
+        <div class="input-group w-100 mt-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="currentSearch"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="{{ 'amidiappApp.picture.home.search' | translate }}"
+          />
+
+          <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+            <fa-icon icon="search"></fa-icon>
+          </button>
+
+          <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pictures?.length === 0">
+    <span jhiTranslate="amidiappApp.picture.home.notFound">No pictures found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pictures && pictures.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.picture.pictureName">Picture Name</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.picture.pictureUrl">Picture Url</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.picture.pictureAlt">Picture Alt</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.picture.isLogo">Is Logo</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.picture.isDisplayed">Is Displayed</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.picture.restaurant">Restaurant</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.picture.restaurant">Restaurant</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let picture of pictures; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/picture', picture.id, 'view']">{{ picture.id }}</a>
+          </td>
+          <td>{{ picture.pictureName }}</td>
+          <td>{{ picture.pictureUrl }}</td>
+          <td>{{ picture.pictureAlt }}</td>
+          <td>{{ picture.isLogo }}</td>
+          <td>{{ picture.isDisplayed }}</td>
+          <td>
+            <div *ngIf="picture.restaurant">
+              <a [routerLink]="['/restaurant', picture.restaurant?.id, 'view']">{{ picture.restaurant?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="picture.restaurant">
+              <a [routerLink]="['/restaurant', picture.restaurant?.id, 'view']">{{ picture.restaurant?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/picture', picture.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/picture', picture.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(picture)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
