@@ -31,7 +31,7 @@ public class DishTag implements Serializable {
     private FoodType dishTag;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "dishTags", "restaurant", "restaurant" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "dishTags", "restaurant" }, allowSetters = true)
     private Dish dish;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

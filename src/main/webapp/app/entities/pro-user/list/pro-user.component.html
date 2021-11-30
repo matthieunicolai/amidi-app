@@ -67,7 +67,6 @@
           <th scope="col"><span jhiTranslate="amidiappApp.proUser.proUserPhoneNumber">Pro User Phone Number</span></th>
           <th scope="col"><span jhiTranslate="amidiappApp.proUser.isActivated">Is Activated</span></th>
           <th scope="col"><span jhiTranslate="amidiappApp.proUser.restaurant">Restaurant</span></th>
-          <th scope="col"><span jhiTranslate="amidiappApp.proUser.restaurant">Restaurant</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -84,11 +83,6 @@
           <td>{{ proUser.proUserEmail }}</td>
           <td>{{ proUser.proUserPhoneNumber }}</td>
           <td>{{ proUser.isActivated }}</td>
-          <td>
-            <div *ngIf="proUser.restaurant">
-              <a [routerLink]="['/restaurant', proUser.restaurant?.id, 'view']">{{ proUser.restaurant?.id }}</a>
-            </div>
-          </td>
           <td>
             <div *ngIf="proUser.restaurant">
               <a [routerLink]="['/restaurant', proUser.restaurant?.id, 'view']">{{ proUser.restaurant?.id }}</a>

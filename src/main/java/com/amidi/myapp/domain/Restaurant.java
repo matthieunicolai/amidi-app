@@ -83,56 +83,23 @@ public class Restaurant implements Serializable {
     private Boolean isActivated;
 
     @OneToMany(mappedBy = "restaurant")
-    @OneToMany(mappedBy = "restaurant")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "restaurant", "restaurant" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "restaurant" }, allowSetters = true)
     private Set<ProUser> proUsers = new HashSet<>();
 
     @OneToMany(mappedBy = "restaurant")
-    @OneToMany(mappedBy = "restaurant")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "restaurant", "restaurant" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "restaurant" }, allowSetters = true)
     private Set<Picture> pictures = new HashSet<>();
 
     @OneToMany(mappedBy = "restaurant")
-    @OneToMany(mappedBy = "restaurant")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "dishTags", "restaurant", "restaurant" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "dishTags", "restaurant" }, allowSetters = true)
     private Set<Dish> dishes = new HashSet<>();
 
     @ManyToOne
-    @ManyToOne
-    @JsonIgnoreProperties(value = { "restaurants", "restaurants" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "restaurants" }, allowSetters = true)
     private Location location;
-
-    @ManyToOne
-    @ManyToOne
-    @JsonIgnoreProperties(value = { "restaurants", "restaurants" }, allowSetters = true)
-    private Location location;
-
-    @OneToMany(mappedBy = "restaurant")
-    @OneToMany(mappedBy = "restaurant")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "dishTags", "restaurant", "restaurant" }, allowSetters = true)
-    private Set<Dish> dishes = new HashSet<>();
-
-    @OneToMany(mappedBy = "restaurant")
-    @OneToMany(mappedBy = "restaurant")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "restaurant", "restaurant" }, allowSetters = true)
-    private Set<Picture> pictures = new HashSet<>();
-
-    @OneToMany(mappedBy = "restaurant")
-    @OneToMany(mappedBy = "restaurant")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "restaurant", "restaurant" }, allowSetters = true)
-    private Set<ProUser> proUsers = new HashSet<>();
 
     @ManyToMany(mappedBy = "restaurants")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -439,112 +406,6 @@ public class Restaurant implements Serializable {
 
     public Restaurant location(Location location) {
         this.setLocation(location);
-        return this;
-    }
-
-    public Location getLocation() {
-        return this.location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public Restaurant location(Location location) {
-        this.setLocation(location);
-        return this;
-    }
-
-    public Set<Dish> getDishes() {
-        return this.dishes;
-    }
-
-    public void setDishes(Set<Dish> dishes) {
-        if (this.dishes != null) {
-            this.dishes.forEach(i -> i.setRestaurant(null));
-        }
-        if (dishes != null) {
-            dishes.forEach(i -> i.setRestaurant(this));
-        }
-        this.dishes = dishes;
-    }
-
-    public Restaurant dishes(Set<Dish> dishes) {
-        this.setDishes(dishes);
-        return this;
-    }
-
-    public Restaurant addDish(Dish dish) {
-        this.dishes.add(dish);
-        dish.setRestaurant(this);
-        return this;
-    }
-
-    public Restaurant removeDish(Dish dish) {
-        this.dishes.remove(dish);
-        dish.setRestaurant(null);
-        return this;
-    }
-
-    public Set<Picture> getPictures() {
-        return this.pictures;
-    }
-
-    public void setPictures(Set<Picture> pictures) {
-        if (this.pictures != null) {
-            this.pictures.forEach(i -> i.setRestaurant(null));
-        }
-        if (pictures != null) {
-            pictures.forEach(i -> i.setRestaurant(this));
-        }
-        this.pictures = pictures;
-    }
-
-    public Restaurant pictures(Set<Picture> pictures) {
-        this.setPictures(pictures);
-        return this;
-    }
-
-    public Restaurant addPicture(Picture picture) {
-        this.pictures.add(picture);
-        picture.setRestaurant(this);
-        return this;
-    }
-
-    public Restaurant removePicture(Picture picture) {
-        this.pictures.remove(picture);
-        picture.setRestaurant(null);
-        return this;
-    }
-
-    public Set<ProUser> getProUsers() {
-        return this.proUsers;
-    }
-
-    public void setProUsers(Set<ProUser> proUsers) {
-        if (this.proUsers != null) {
-            this.proUsers.forEach(i -> i.setRestaurant(null));
-        }
-        if (proUsers != null) {
-            proUsers.forEach(i -> i.setRestaurant(this));
-        }
-        this.proUsers = proUsers;
-    }
-
-    public Restaurant proUsers(Set<ProUser> proUsers) {
-        this.setProUsers(proUsers);
-        return this;
-    }
-
-    public Restaurant addProUser(ProUser proUser) {
-        this.proUsers.add(proUser);
-        proUser.setRestaurant(this);
-        return this;
-    }
-
-    public Restaurant removeProUser(ProUser proUser) {
-        this.proUsers.remove(proUser);
-        proUser.setRestaurant(null);
         return this;
     }
 

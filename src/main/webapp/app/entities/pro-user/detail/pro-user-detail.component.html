@@ -52,12 +52,6 @@
             <a [routerLink]="['/restaurant', proUser.restaurant?.id, 'view']">{{ proUser.restaurant?.id }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="amidiappApp.proUser.restaurant">Restaurant</span></dt>
-        <dd>
-          <div *ngIf="proUser.restaurant">
-            <a [routerLink]="['/restaurant', proUser.restaurant?.id, 'view']">{{ proUser.restaurant?.id }}</a>
-          </div>
-        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

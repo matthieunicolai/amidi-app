@@ -43,12 +43,10 @@ describe('ProUser Management Update Component', () => {
       const proUser: IProUser = { id: 456 };
       const restaurant: IRestaurant = { id: 12008 };
       proUser.restaurant = restaurant;
-      const restaurant: IRestaurant = { id: 15504 };
-      proUser.restaurant = restaurant;
 
-      const restaurantCollection: IRestaurant[] = [{ id: 86928 }];
+      const restaurantCollection: IRestaurant[] = [{ id: 15504 }];
       jest.spyOn(restaurantService, 'query').mockReturnValue(of(new HttpResponse({ body: restaurantCollection })));
-      const additionalRestaurants = [restaurant, restaurant];
+      const additionalRestaurants = [restaurant];
       const expectedCollection: IRestaurant[] = [...additionalRestaurants, ...restaurantCollection];
       jest.spyOn(restaurantService, 'addRestaurantToCollectionIfMissing').mockReturnValue(expectedCollection);
 
@@ -62,16 +60,13 @@ describe('ProUser Management Update Component', () => {
 
     it('Should update editForm', () => {
       const proUser: IProUser = { id: 456 };
-      const restaurant: IRestaurant = { id: 63393 };
-      proUser.restaurant = restaurant;
-      const restaurant: IRestaurant = { id: 50072 };
+      const restaurant: IRestaurant = { id: 86928 };
       proUser.restaurant = restaurant;
 
       activatedRoute.data = of({ proUser });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(proUser));
-      expect(comp.restaurantsSharedCollection).toContain(restaurant);
       expect(comp.restaurantsSharedCollection).toContain(restaurant);
     });
   });

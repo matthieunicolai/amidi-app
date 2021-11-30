@@ -40,12 +40,6 @@
             <a [routerLink]="['/restaurant', picture.restaurant?.id, 'view']">{{ picture.restaurant?.id }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="amidiappApp.picture.restaurant">Restaurant</span></dt>
-        <dd>
-          <div *ngIf="picture.restaurant">
-            <a [routerLink]="['/restaurant', picture.restaurant?.id, 'view']">{{ picture.restaurant?.id }}</a>
-          </div>
-        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

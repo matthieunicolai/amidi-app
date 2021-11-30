@@ -67,19 +67,7 @@ public class Dish implements Serializable {
     private Set<DishTag> dishTags = new HashSet<>();
 
     @ManyToOne
-    @ManyToOne
-    @JsonIgnoreProperties(
-        value = { "proUsers", "pictures", "dishes", "location", "location", "dishes", "pictures", "proUsers", "clients" },
-        allowSetters = true
-    )
-    private Restaurant restaurant;
-
-    @ManyToOne
-    @ManyToOne
-    @JsonIgnoreProperties(
-        value = { "proUsers", "pictures", "dishes", "location", "location", "dishes", "pictures", "proUsers", "clients" },
-        allowSetters = true
-    )
+    @JsonIgnoreProperties(value = { "proUsers", "pictures", "dishes", "location", "clients" }, allowSetters = true)
     private Restaurant restaurant;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -242,19 +230,6 @@ public class Dish implements Serializable {
     public Dish removeDishTag(DishTag dishTag) {
         this.dishTags.remove(dishTag);
         dishTag.setDish(null);
-        return this;
-    }
-
-    public Restaurant getRestaurant() {
-        return this.restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
-    public Dish restaurant(Restaurant restaurant) {
-        this.setRestaurant(restaurant);
         return this;
     }
 

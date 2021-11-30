@@ -12,7 +12,6 @@ export interface IProUser {
   proUserPhoneNumber?: string;
   isActivated?: boolean;
   restaurant?: IRestaurant | null;
-  restaurant?: IRestaurant | null;
 }
 
 export class ProUser implements IProUser {
@@ -26,7 +25,6 @@ export class ProUser implements IProUser {
     public proUserEmail?: string,
     public proUserPhoneNumber?: string,
     public isActivated?: boolean,
-    public restaurant?: IRestaurant | null,
     public restaurant?: IRestaurant | null
   ) {
     this.isActivated = this.isActivated ?? false;

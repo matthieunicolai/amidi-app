@@ -27,7 +27,6 @@ export class PictureUpdateComponent implements OnInit {
     isLogo: [null, [Validators.required]],
     isDisplayed: [null, [Validators.required]],
     restaurant: [],
-    restaurant: [],
   });
 
   constructor(
@@ -91,12 +90,10 @@ export class PictureUpdateComponent implements OnInit {
       isLogo: picture.isLogo,
       isDisplayed: picture.isDisplayed,
       restaurant: picture.restaurant,
-      restaurant: picture.restaurant,
     });
 
     this.restaurantsSharedCollection = this.restaurantService.addRestaurantToCollectionIfMissing(
       this.restaurantsSharedCollection,
-      picture.restaurant,
       picture.restaurant
     );
   }
@@ -107,11 +104,7 @@ export class PictureUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IRestaurant[]>) => res.body ?? []))
       .pipe(
         map((restaurants: IRestaurant[]) =>
-          this.restaurantService.addRestaurantToCollectionIfMissing(
-            restaurants,
-            this.editForm.get('restaurant')!.value,
-            this.editForm.get('restaurant')!.value
-          )
+          this.restaurantService.addRestaurantToCollectionIfMissing(restaurants, this.editForm.get('restaurant')!.value)
         )
       )
       .subscribe((restaurants: IRestaurant[]) => (this.restaurantsSharedCollection = restaurants));
@@ -126,7 +119,6 @@ export class PictureUpdateComponent implements OnInit {
       pictureAlt: this.editForm.get(['pictureAlt'])!.value,
       isLogo: this.editForm.get(['isLogo'])!.value,
       isDisplayed: this.editForm.get(['isDisplayed'])!.value,
-      restaurant: this.editForm.get(['restaurant'])!.value,
       restaurant: this.editForm.get(['restaurant'])!.value,
     };
   }

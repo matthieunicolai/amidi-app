@@ -73,7 +73,6 @@
           <th scope="col"><span jhiTranslate="amidiappApp.restaurant.restaurantLongitude">Restaurant Longitude</span></th>
           <th scope="col"><span jhiTranslate="amidiappApp.restaurant.isActivated">Is Activated</span></th>
           <th scope="col"><span jhiTranslate="amidiappApp.restaurant.location">Location</span></th>
-          <th scope="col"><span jhiTranslate="amidiappApp.restaurant.location">Location</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -98,11 +97,6 @@
           <td>{{ restaurant.restaurantLatitude }}</td>
           <td>{{ restaurant.restaurantLongitude }}</td>
           <td>{{ restaurant.isActivated }}</td>
-          <td>
-            <div *ngIf="restaurant.location">
-              <a [routerLink]="['/location', restaurant.location?.id, 'view']">{{ restaurant.location?.id }}</a>
-            </div>
-          </td>
           <td>
             <div *ngIf="restaurant.location">
               <a [routerLink]="['/location', restaurant.location?.id, 'view']">{{ restaurant.location?.id }}</a>

@@ -13,11 +13,5 @@
                                  constraintName="fk_pro_user__restaurant_id"
                                  referencedColumnNames="id"
                                  referencedTableName="restaurant"/>
-
-        <addForeignKeyConstraint baseColumnNames="restaurant_id"
-                                 baseTableName="pro_user"
-                                 constraintName="fk_pro_user__restaurant_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="restaurant"/>
     </changeSet>
 </databaseChangeLog>

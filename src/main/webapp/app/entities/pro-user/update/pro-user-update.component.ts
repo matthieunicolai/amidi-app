@@ -32,7 +32,6 @@ export class ProUserUpdateComponent implements OnInit {
     proUserPhoneNumber: [null, [Validators.required]],
     isActivated: [null, [Validators.required]],
     restaurant: [],
-    restaurant: [],
   });
 
   constructor(
@@ -99,12 +98,10 @@ export class ProUserUpdateComponent implements OnInit {
       proUserPhoneNumber: proUser.proUserPhoneNumber,
       isActivated: proUser.isActivated,
       restaurant: proUser.restaurant,
-      restaurant: proUser.restaurant,
     });
 
     this.restaurantsSharedCollection = this.restaurantService.addRestaurantToCollectionIfMissing(
       this.restaurantsSharedCollection,
-      proUser.restaurant,
       proUser.restaurant
     );
   }
@@ -115,11 +112,7 @@ export class ProUserUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IRestaurant[]>) => res.body ?? []))
       .pipe(
         map((restaurants: IRestaurant[]) =>
-          this.restaurantService.addRestaurantToCollectionIfMissing(
-            restaurants,
-            this.editForm.get('restaurant')!.value,
-            this.editForm.get('restaurant')!.value
-          )
+          this.restaurantService.addRestaurantToCollectionIfMissing(restaurants, this.editForm.get('restaurant')!.value)
         )
       )
       .subscribe((restaurants: IRestaurant[]) => (this.restaurantsSharedCollection = restaurants));
@@ -137,7 +130,6 @@ export class ProUserUpdateComponent implements OnInit {
       proUserEmail: this.editForm.get(['proUserEmail'])!.value,
       proUserPhoneNumber: this.editForm.get(['proUserPhoneNumber'])!.value,
       isActivated: this.editForm.get(['isActivated'])!.value,
-      restaurant: this.editForm.get(['restaurant'])!.value,
       restaurant: this.editForm.get(['restaurant'])!.value,
     };
   }

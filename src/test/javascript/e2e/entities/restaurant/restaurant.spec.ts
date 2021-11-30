@@ -58,7 +58,6 @@ describe('Restaurant e2e test', () => {
       restaurantUpdatePage.setRestaurantLongitudeInput('5'),
       restaurantUpdatePage.getIsActivatedInput().click(),
       restaurantUpdatePage.locationSelectLastOption(),
-      restaurantUpdatePage.locationSelectLastOption(),
     ]);
 
     await restaurantUpdatePage.save();

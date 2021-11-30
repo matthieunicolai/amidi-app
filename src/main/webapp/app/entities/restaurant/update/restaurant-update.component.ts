@@ -43,7 +43,6 @@ export class RestaurantUpdateComponent implements OnInit {
     restaurantLongitude: [null, [Validators.required]],
     isActivated: [null, [Validators.required]],
     location: [],
-    location: [],
   });
 
   constructor(
@@ -121,12 +120,10 @@ export class RestaurantUpdateComponent implements OnInit {
       restaurantLongitude: restaurant.restaurantLongitude,
       isActivated: restaurant.isActivated,
       location: restaurant.location,
-      location: restaurant.location,
     });
 
     this.locationsSharedCollection = this.locationService.addLocationToCollectionIfMissing(
       this.locationsSharedCollection,
-      restaurant.location,
       restaurant.location
     );
   }
@@ -137,11 +134,7 @@ export class RestaurantUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<ILocation[]>) => res.body ?? []))
       .pipe(
         map((locations: ILocation[]) =>
-          this.locationService.addLocationToCollectionIfMissing(
-            locations,
-            this.editForm.get('location')!.value,
-            this.editForm.get('location')!.value
-          )
+          this.locationService.addLocationToCollectionIfMissing(locations, this.editForm.get('location')!.value)
         )
       )
       .subscribe((locations: ILocation[]) => (this.locationsSharedCollection = locations));
@@ -167,7 +160,6 @@ export class RestaurantUpdateComponent implements OnInit {
       restaurantLatitude: this.editForm.get(['restaurantLatitude'])!.value,
       restaurantLongitude: this.editForm.get(['restaurantLongitude'])!.value,
       isActivated: this.editForm.get(['isActivated'])!.value,
-      location: this.editForm.get(['location'])!.value,
       location: this.editForm.get(['location'])!.value,
     };
   }

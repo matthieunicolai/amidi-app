@@ -6,7 +6,6 @@ export interface ILocation {
   city?: string;
   postalCode?: string;
   restaurants?: IRestaurant[] | null;
-  restaurants?: IRestaurant[] | null;
 }
 
 export class Location implements ILocation {
@@ -15,7 +14,6 @@ export class Location implements ILocation {
     public country?: string,
     public city?: string,
     public postalCode?: string,
-    public restaurants?: IRestaurant[] | null,
     public restaurants?: IRestaurant[] | null
   ) {}
 }

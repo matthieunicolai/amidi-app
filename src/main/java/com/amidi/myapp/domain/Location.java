@@ -39,23 +39,8 @@ public class Location implements Serializable {
     private String postalCode;
 
     @OneToMany(mappedBy = "location")
-    @OneToMany(mappedBy = "location")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(
-        value = { "proUsers", "pictures", "dishes", "location", "location", "dishes", "pictures", "proUsers", "clients" },
-        allowSetters = true
-    )
-    private Set<Restaurant> restaurants = new HashSet<>();
-
-    @OneToMany(mappedBy = "location")
-    @OneToMany(mappedBy = "location")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(
-        value = { "proUsers", "pictures", "dishes", "location", "location", "dishes", "pictures", "proUsers", "clients" },
-        allowSetters = true
-    )
+    @JsonIgnoreProperties(value = { "proUsers", "pictures", "dishes", "location", "clients" }, allowSetters = true)
     private Set<Restaurant> restaurants = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -110,37 +95,6 @@ public class Location implements Serializable {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
-    }
-
-    public Set<Restaurant> getRestaurants() {
-        return this.restaurants;
-    }
-
-    public void setRestaurants(Set<Restaurant> restaurants) {
-        if (this.restaurants != null) {
-            this.restaurants.forEach(i -> i.setLocation(null));
-        }
-        if (restaurants != null) {
-            restaurants.forEach(i -> i.setLocation(this));
-        }
-        this.restaurants = restaurants;
-    }
-
-    public Location restaurants(Set<Restaurant> restaurants) {
-        this.setRestaurants(restaurants);
-        return this;
-    }
-
-    public Location addRestaurant(Restaurant restaurant) {
-        this.restaurants.add(restaurant);
-        restaurant.setLocation(this);
-        return this;
-    }
-
-    public Location removeRestaurant(Restaurant restaurant) {
-        this.restaurants.remove(restaurant);
-        restaurant.setLocation(null);
-        return this;
     }
 
     public Set<Restaurant> getRestaurants() {

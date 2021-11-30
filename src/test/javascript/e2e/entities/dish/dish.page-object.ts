@@ -41,7 +41,6 @@ export class DishUpdatePage {
   isAvailableInput = element(by.id('field_isAvailable'));
 
   restaurantSelect = element(by.id('field_restaurant'));
-  restaurantSelect = element(by.id('field_restaurant'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -117,22 +116,6 @@ export class DishUpdatePage {
 
   getIsAvailableInput(): ElementFinder {
     return this.isAvailableInput;
-  }
-
-  async restaurantSelectLastOption(): Promise<void> {
-    await this.restaurantSelect.all(by.tagName('option')).last().click();
-  }
-
-  async restaurantSelectOption(option: string): Promise<void> {
-    await this.restaurantSelect.sendKeys(option);
-  }
-
-  getRestaurantSelect(): ElementFinder {
-    return this.restaurantSelect;
-  }
-
-  async getRestaurantSelectedOption(): Promise<string> {
-    return await this.restaurantSelect.element(by.css('option:checked')).getText();
   }
 
   async restaurantSelectLastOption(): Promise<void> {

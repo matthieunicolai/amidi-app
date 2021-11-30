@@ -27,10 +27,6 @@ export interface IRestaurant {
   pictures?: IPicture[] | null;
   dishes?: IDish[] | null;
   location?: ILocation | null;
-  location?: ILocation | null;
-  dishes?: IDish[] | null;
-  pictures?: IPicture[] | null;
-  proUsers?: IProUser[] | null;
   clients?: IClient[] | null;
 }
 
@@ -55,10 +51,6 @@ export class Restaurant implements IRestaurant {
     public pictures?: IPicture[] | null,
     public dishes?: IDish[] | null,
     public location?: ILocation | null,
-    public location?: ILocation | null,
-    public dishes?: IDish[] | null,
-    public pictures?: IPicture[] | null,
-    public proUsers?: IProUser[] | null,
     public clients?: IClient[] | null
   ) {
     this.isSub = this.isSub ?? false;
