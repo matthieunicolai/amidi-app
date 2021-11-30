@@ -1,0 +1,138 @@
+entity Hedgeprod {
+	hName String required
+    hSurname String required
+    hRole HedgeprodRole required
+    hEmail String required
+    hPhoneNumber String
+    isActivated Boolean required
+}
+
+entity Restaurant {
+    restaurantName String required
+    restaurantAddress String required
+    restaurantAddressCmp String required
+    restaurantType RestaurationType
+    isSub Boolean required
+    restaurantSubscription Subscription 
+    restaurantSubDate Instant 
+    restaurantDescription String
+    restaurantPhoneNumber String required
+    restaurantEmail String required
+    restaurantWebSite String 
+    restaurantLatitude Float required
+    restaurantLongitude Float required
+    isActivated Boolean required
+}
+
+
+
+entity Client {
+	name String required
+    surname String required
+    birthDate Instant
+    email String required
+    phoneNumber String 
+    clientLogin String required
+    clientPwd String required
+    isActivated Boolean required
+}
+
+entity ProUser {
+	proUserName String required
+    proUserSurname String required
+    proUserRole UserRole required
+    proUserLogin String required
+    proUserPwd String required
+    proUserEmail String required
+    proUserPhoneNumber String required
+    isActivated Boolean required
+}
+
+entity Picture {
+	pictureName String required
+    pictureUrl String required
+    pictureAlt String required
+    isLogo Boolean required
+    isDisplayed Boolean required
+    
+}
+
+entity Dish {
+	dishName String required
+    dishDescription String
+    dishPrice Float required
+    dishDate Instant required
+    dishPictureName String required
+    dishPictureUrl String required
+    dishPictureAlt String
+    isDailyDish Boolean required
+    isAvailable Boolean required
+}
+
+
+entity DishTag {
+    dishTag FoodType required
+}
+
+entity Location {
+	country String required
+    city String required
+    postalCode String required
+
+}
+
+enum RestaurationType {
+	BRASSERIE, FASTFOOD, RESTAURANT,
+    STREETFOOD, FOODTRUCK, CAFETERIA,
+    GRILL, BOULANGERIE, PUB
+}
+
+enum UserRole {
+	OWNER, USER
+}
+
+enum HedgeprodRole {
+	ADMIN, DEV, DEMO
+}
+
+enum FoodType {
+	VEGAN, VEGETARIEN, VIANDE, FAITMAISON, SANSGLUTEN, POISSON
+}
+
+enum Subscription {
+	SILVER, GOLD, PLATINIUM
+}
+
+
+relationship ManyToMany {
+ 	Client to Restaurant
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+    Restaurant to ProUser
+    Location to Restaurant
+    Restaurant to Picture
+    Restaurant to Dish
+    Dish to DishTag
+}
+
+relationship ManyToOne {
+	Dish to Restaurant
+    Picture to Restaurant
+    Restaurant to Location
+    ProUser to Restaurant
+}
+
+
+paginate Dish with infinite-scroll
+
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+
+service all with serviceImpl except Employee, Jo
+
+
