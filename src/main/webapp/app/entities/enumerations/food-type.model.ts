@@ -1,0 +1,13 @@
+export enum FoodType {
+  VEGAN = 'VEGAN',
+
+  VEGETARIEN = 'VEGETARIEN',
+
+  VIANDE = 'VIANDE',
+
+  FAITMAISON = 'FAITMAISON',
+
+  SANSGLUTEN = 'SANSGLUTEN',
+
+  POISSON = 'POISSON',
+}

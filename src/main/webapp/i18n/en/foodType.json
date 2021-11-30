@@ -1,0 +1,13 @@
+{
+  "amidiappApp": {
+    "FoodType": {
+      "null": "",
+      "VEGAN": "VEGAN",
+      "VEGETARIEN": "VEGETARIEN",
+      "VIANDE": "VIANDE",
+      "FAITMAISON": "FAITMAISON",
+      "SANSGLUTEN": "SANSGLUTEN",
+      "POISSON": "POISSON"
+    }
+  }
+}

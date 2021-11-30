@@ -1,0 +1,34 @@
+{
+  "amidiappApp": {
+    "proUser": {
+      "home": {
+        "title": "Pro Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pro User",
+        "createOrEditLabel": "Create or edit a Pro User",
+        "search": "Search for Pro User",
+        "notFound": "No Pro Users found"
+      },
+      "created": "A new Pro User is created with identifier {{ param }}",
+      "updated": "A Pro User is updated with identifier {{ param }}",
+      "deleted": "A Pro User is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pro User {{ id }}?"
+      },
+      "detail": {
+        "title": "Pro User"
+      },
+      "id": "ID",
+      "proUserName": "Pro User Name",
+      "proUserSurname": "Pro User Surname",
+      "proUserRole": "Pro User Role",
+      "proUserLogin": "Pro User Login",
+      "proUserPwd": "Pro User Pwd",
+      "proUserEmail": "Pro User Email",
+      "proUserPhoneNumber": "Pro User Phone Number",
+      "isActivated": "Is Activated",
+      "restaurant": "Restaurant",
+      "restaurant": "Restaurant"
+    }
+  }
+}

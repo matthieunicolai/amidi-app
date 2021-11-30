@@ -1,0 +1,26 @@
+{
+  "amidiappApp": {
+    "dishTag": {
+      "home": {
+        "title": "DishTags",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Dish Tag",
+        "createOrEditLabel": "Créer ou éditer un Dish Tag",
+        "search": "Recherche pour Dish Tag",
+        "notFound": "Aucun Dish Tag trouvé"
+      },
+      "created": "Un nouveau Dish Tag a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Dish Tag avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Dish Tag avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Dish Tag {{ id }} ?"
+      },
+      "detail": {
+        "title": "Dish Tag"
+      },
+      "id": "ID",
+      "dishTag": "Dish Tag",
+      "dish": "Dish"
+    }
+  }
+}

@@ -51,6 +51,21 @@ public class CacheConfiguration {
             createCache(cm, com.amidi.myapp.domain.User.class.getName());
             createCache(cm, com.amidi.myapp.domain.Authority.class.getName());
             createCache(cm, com.amidi.myapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.amidi.myapp.domain.Hedgeprod.class.getName());
+            createCache(cm, com.amidi.myapp.domain.Restaurant.class.getName());
+            createCache(cm, com.amidi.myapp.domain.Restaurant.class.getName() + ".proUsers");
+            createCache(cm, com.amidi.myapp.domain.Restaurant.class.getName() + ".pictures");
+            createCache(cm, com.amidi.myapp.domain.Restaurant.class.getName() + ".dishes");
+            createCache(cm, com.amidi.myapp.domain.Restaurant.class.getName() + ".clients");
+            createCache(cm, com.amidi.myapp.domain.Client.class.getName());
+            createCache(cm, com.amidi.myapp.domain.Client.class.getName() + ".restaurants");
+            createCache(cm, com.amidi.myapp.domain.ProUser.class.getName());
+            createCache(cm, com.amidi.myapp.domain.Picture.class.getName());
+            createCache(cm, com.amidi.myapp.domain.Dish.class.getName());
+            createCache(cm, com.amidi.myapp.domain.Dish.class.getName() + ".dishTags");
+            createCache(cm, com.amidi.myapp.domain.DishTag.class.getName());
+            createCache(cm, com.amidi.myapp.domain.Location.class.getName());
+            createCache(cm, com.amidi.myapp.domain.Location.class.getName() + ".restaurants");
             // jhipster-needle-ehcache-add-entry
         };
     }

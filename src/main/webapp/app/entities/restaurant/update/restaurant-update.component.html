@@ -1,0 +1,381 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-restaurant-heading" data-cy="RestaurantCreateUpdateHeading" jhiTranslate="amidiappApp.restaurant.home.createOrEditLabel">
+        Create or edit a Restaurant
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantName" for="field_restaurantName"
+            >Restaurant Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="restaurantName"
+            id="field_restaurantName"
+            data-cy="restaurantName"
+            formControlName="restaurantName"
+          />
+          <div
+            *ngIf="
+              editForm.get('restaurantName')!.invalid && (editForm.get('restaurantName')!.dirty || editForm.get('restaurantName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('restaurantName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantAddress" for="field_restaurantAddress"
+            >Restaurant Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="restaurantAddress"
+            id="field_restaurantAddress"
+            data-cy="restaurantAddress"
+            formControlName="restaurantAddress"
+          />
+          <div
+            *ngIf="
+              editForm.get('restaurantAddress')!.invalid &&
+              (editForm.get('restaurantAddress')!.dirty || editForm.get('restaurantAddress')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('restaurantAddress')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantAddressCmp" for="field_restaurantAddressCmp"
+            >Restaurant Address Cmp</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="restaurantAddressCmp"
+            id="field_restaurantAddressCmp"
+            data-cy="restaurantAddressCmp"
+            formControlName="restaurantAddressCmp"
+          />
+          <div
+            *ngIf="
+              editForm.get('restaurantAddressCmp')!.invalid &&
+              (editForm.get('restaurantAddressCmp')!.dirty || editForm.get('restaurantAddressCmp')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('restaurantAddressCmp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantType" for="field_restaurantType"
+            >Restaurant Type</label
+          >
+          <select
+            class="form-control"
+            name="restaurantType"
+            formControlName="restaurantType"
+            id="field_restaurantType"
+            data-cy="restaurantType"
+          >
+            <option [ngValue]="null">{{ 'amidiappApp.RestaurationType.null' | translate }}</option>
+            <option *ngFor="let restaurationType of restaurationTypeValues" [value]="restaurationType">
+              {{ 'amidiappApp.RestaurationType.' + restaurationType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.isSub" for="field_isSub">Is Sub</label>
+          <input type="checkbox" class="form-check" name="isSub" id="field_isSub" data-cy="isSub" formControlName="isSub" />
+          <div *ngIf="editForm.get('isSub')!.invalid && (editForm.get('isSub')!.dirty || editForm.get('isSub')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('isSub')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantSubscription" for="field_restaurantSubscription"
+            >Restaurant Subscription</label
+          >
+          <select
+            class="form-control"
+            name="restaurantSubscription"
+            formControlName="restaurantSubscription"
+            id="field_restaurantSubscription"
+            data-cy="restaurantSubscription"
+          >
+            <option [ngValue]="null">{{ 'amidiappApp.SubscriptionType.null' | translate }}</option>
+            <option *ngFor="let subscriptionType of subscriptionTypeValues" [value]="subscriptionType">
+              {{ 'amidiappApp.SubscriptionType.' + subscriptionType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantSubDate" for="field_restaurantSubDate"
+            >Restaurant Sub Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_restaurantSubDate"
+              data-cy="restaurantSubDate"
+              type="datetime-local"
+              class="form-control"
+              name="restaurantSubDate"
+              formControlName="restaurantSubDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantDescription" for="field_restaurantDescription"
+            >Restaurant Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="restaurantDescription"
+            id="field_restaurantDescription"
+            data-cy="restaurantDescription"
+            formControlName="restaurantDescription"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantPhoneNumber" for="field_restaurantPhoneNumber"
+            >Restaurant Phone Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="restaurantPhoneNumber"
+            id="field_restaurantPhoneNumber"
+            data-cy="restaurantPhoneNumber"
+            formControlName="restaurantPhoneNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('restaurantPhoneNumber')!.invalid &&
+              (editForm.get('restaurantPhoneNumber')!.dirty || editForm.get('restaurantPhoneNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('restaurantPhoneNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantEmail" for="field_restaurantEmail"
+            >Restaurant Email</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="restaurantEmail"
+            id="field_restaurantEmail"
+            data-cy="restaurantEmail"
+            formControlName="restaurantEmail"
+          />
+          <div
+            *ngIf="
+              editForm.get('restaurantEmail')!.invalid &&
+              (editForm.get('restaurantEmail')!.dirty || editForm.get('restaurantEmail')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('restaurantEmail')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantWebSite" for="field_restaurantWebSite"
+            >Restaurant Web Site</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="restaurantWebSite"
+            id="field_restaurantWebSite"
+            data-cy="restaurantWebSite"
+            formControlName="restaurantWebSite"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantLatitude" for="field_restaurantLatitude"
+            >Restaurant Latitude</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="restaurantLatitude"
+            id="field_restaurantLatitude"
+            data-cy="restaurantLatitude"
+            formControlName="restaurantLatitude"
+          />
+          <div
+            *ngIf="
+              editForm.get('restaurantLatitude')!.invalid &&
+              (editForm.get('restaurantLatitude')!.dirty || editForm.get('restaurantLatitude')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('restaurantLatitude')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('restaurantLatitude')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.restaurantLongitude" for="field_restaurantLongitude"
+            >Restaurant Longitude</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="restaurantLongitude"
+            id="field_restaurantLongitude"
+            data-cy="restaurantLongitude"
+            formControlName="restaurantLongitude"
+          />
+          <div
+            *ngIf="
+              editForm.get('restaurantLongitude')!.invalid &&
+              (editForm.get('restaurantLongitude')!.dirty || editForm.get('restaurantLongitude')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('restaurantLongitude')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('restaurantLongitude')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.isActivated" for="field_isActivated">Is Activated</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isActivated"
+            id="field_isActivated"
+            data-cy="isActivated"
+            formControlName="isActivated"
+          />
+          <div *ngIf="editForm.get('isActivated')!.invalid && (editForm.get('isActivated')!.dirty || editForm.get('isActivated')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('isActivated')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.location" for="field_location">Location</label>
+          <select class="form-control" id="field_location" data-cy="location" name="location" formControlName="location">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="locationOption.id === editForm.get('location')!.value?.id ? editForm.get('location')!.value : locationOption"
+              *ngFor="let locationOption of locationsSharedCollection; trackBy: trackLocationById"
+            >
+              {{ locationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.restaurant.location" for="field_location">Location</label>
+          <select class="form-control" id="field_location" data-cy="location" name="location" formControlName="location">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="locationOption.id === editForm.get('location')!.value?.id ? editForm.get('location')!.value : locationOption"
+              *ngFor="let locationOption of locationsSharedCollection; trackBy: trackLocationById"
+            >
+              {{ locationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

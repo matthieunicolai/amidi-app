@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dishTag">
+      <h2 data-cy="dishTagDetailsHeading"><span jhiTranslate="amidiappApp.dishTag.detail.title">Dish Tag</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dishTag.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dishTag.dishTag">Dish Tag</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'amidiappApp.FoodType.' + dishTag.dishTag }}">{{ dishTag.dishTag }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.dishTag.dish">Dish</span></dt>
+        <dd>
+          <div *ngIf="dishTag.dish">
+            <a [routerLink]="['/dish', dishTag.dish?.id, 'view']">{{ dishTag.dish?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/dish-tag', dishTag.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

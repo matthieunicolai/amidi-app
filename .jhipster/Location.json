@@ -1,0 +1,44 @@
+{
+  "name": "Location",
+  "fields": [
+    {
+      "fieldName": "country",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "location",
+      "relationshipName": "restaurant"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "location",
+      "relationshipName": "restaurant"
+    }
+  ],
+  "entityTableName": "location",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211130142911"
+}

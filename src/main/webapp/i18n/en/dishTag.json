@@ -1,0 +1,26 @@
+{
+  "amidiappApp": {
+    "dishTag": {
+      "home": {
+        "title": "Dish Tags",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Dish Tag",
+        "createOrEditLabel": "Create or edit a Dish Tag",
+        "search": "Search for Dish Tag",
+        "notFound": "No Dish Tags found"
+      },
+      "created": "A new Dish Tag is created with identifier {{ param }}",
+      "updated": "A Dish Tag is updated with identifier {{ param }}",
+      "deleted": "A Dish Tag is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dish Tag {{ id }}?"
+      },
+      "detail": {
+        "title": "Dish Tag"
+      },
+      "id": "ID",
+      "dishTag": "Dish Tag",
+      "dish": "Dish"
+    }
+  }
+}

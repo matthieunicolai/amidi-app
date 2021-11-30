@@ -1,0 +1,129 @@
+<div>
+  <h2 id="page-heading" data-cy="ProUserHeading">
+    <span jhiTranslate="amidiappApp.proUser.home.title">Pro Users</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="amidiappApp.proUser.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-pro-user"
+        [routerLink]="['/pro-user/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="amidiappApp.proUser.home.createLabel"> Create a new Pro User </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form name="searchForm" class="form-inline">
+        <div class="input-group w-100 mt-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="currentSearch"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="{{ 'amidiappApp.proUser.home.search' | translate }}"
+          />
+
+          <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+            <fa-icon icon="search"></fa-icon>
+          </button>
+
+          <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="proUsers?.length === 0">
+    <span jhiTranslate="amidiappApp.proUser.home.notFound">No proUsers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="proUsers && proUsers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.proUserName">Pro User Name</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.proUserSurname">Pro User Surname</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.proUserRole">Pro User Role</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.proUserLogin">Pro User Login</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.proUserPwd">Pro User Pwd</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.proUserEmail">Pro User Email</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.proUserPhoneNumber">Pro User Phone Number</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.isActivated">Is Activated</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.restaurant">Restaurant</span></th>
+          <th scope="col"><span jhiTranslate="amidiappApp.proUser.restaurant">Restaurant</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let proUser of proUsers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/pro-user', proUser.id, 'view']">{{ proUser.id }}</a>
+          </td>
+          <td>{{ proUser.proUserName }}</td>
+          <td>{{ proUser.proUserSurname }}</td>
+          <td jhiTranslate="{{ 'amidiappApp.UserRole.' + proUser.proUserRole }}">{{ proUser.proUserRole }}</td>
+          <td>{{ proUser.proUserLogin }}</td>
+          <td>{{ proUser.proUserPwd }}</td>
+          <td>{{ proUser.proUserEmail }}</td>
+          <td>{{ proUser.proUserPhoneNumber }}</td>
+          <td>{{ proUser.isActivated }}</td>
+          <td>
+            <div *ngIf="proUser.restaurant">
+              <a [routerLink]="['/restaurant', proUser.restaurant?.id, 'view']">{{ proUser.restaurant?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="proUser.restaurant">
+              <a [routerLink]="['/restaurant', proUser.restaurant?.id, 'view']">{{ proUser.restaurant?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/pro-user', proUser.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/pro-user', proUser.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(proUser)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

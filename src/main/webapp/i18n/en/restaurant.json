@@ -1,0 +1,47 @@
+{
+  "amidiappApp": {
+    "restaurant": {
+      "home": {
+        "title": "Restaurants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Restaurant",
+        "createOrEditLabel": "Create or edit a Restaurant",
+        "search": "Search for Restaurant",
+        "notFound": "No Restaurants found"
+      },
+      "created": "A new Restaurant is created with identifier {{ param }}",
+      "updated": "A Restaurant is updated with identifier {{ param }}",
+      "deleted": "A Restaurant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Restaurant {{ id }}?"
+      },
+      "detail": {
+        "title": "Restaurant"
+      },
+      "id": "ID",
+      "restaurantName": "Restaurant Name",
+      "restaurantAddress": "Restaurant Address",
+      "restaurantAddressCmp": "Restaurant Address Cmp",
+      "restaurantType": "Restaurant Type",
+      "isSub": "Is Sub",
+      "restaurantSubscription": "Restaurant Subscription",
+      "restaurantSubDate": "Restaurant Sub Date",
+      "restaurantDescription": "Restaurant Description",
+      "restaurantPhoneNumber": "Restaurant Phone Number",
+      "restaurantEmail": "Restaurant Email",
+      "restaurantWebSite": "Restaurant Web Site",
+      "restaurantLatitude": "Restaurant Latitude",
+      "restaurantLongitude": "Restaurant Longitude",
+      "isActivated": "Is Activated",
+      "proUser": "Pro User",
+      "picture": "Picture",
+      "dish": "Dish",
+      "location": "Location",
+      "location": "Location",
+      "dish": "Dish",
+      "picture": "Picture",
+      "proUser": "Pro User",
+      "client": "Client"
+    }
+  }
+}

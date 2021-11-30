@@ -1,0 +1,245 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-pro-user-heading" data-cy="ProUserCreateUpdateHeading" jhiTranslate="amidiappApp.proUser.home.createOrEditLabel">
+        Create or edit a Pro User
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.proUserName" for="field_proUserName">Pro User Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="proUserName"
+            id="field_proUserName"
+            data-cy="proUserName"
+            formControlName="proUserName"
+          />
+          <div *ngIf="editForm.get('proUserName')!.invalid && (editForm.get('proUserName')!.dirty || editForm.get('proUserName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('proUserName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.proUserSurname" for="field_proUserSurname"
+            >Pro User Surname</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="proUserSurname"
+            id="field_proUserSurname"
+            data-cy="proUserSurname"
+            formControlName="proUserSurname"
+          />
+          <div
+            *ngIf="
+              editForm.get('proUserSurname')!.invalid && (editForm.get('proUserSurname')!.dirty || editForm.get('proUserSurname')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('proUserSurname')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.proUserRole" for="field_proUserRole">Pro User Role</label>
+          <select class="form-control" name="proUserRole" formControlName="proUserRole" id="field_proUserRole" data-cy="proUserRole">
+            <option [ngValue]="null">{{ 'amidiappApp.UserRole.null' | translate }}</option>
+            <option *ngFor="let userRole of userRoleValues" [value]="userRole">{{ 'amidiappApp.UserRole.' + userRole | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('proUserRole')!.invalid && (editForm.get('proUserRole')!.dirty || editForm.get('proUserRole')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('proUserRole')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.proUserLogin" for="field_proUserLogin">Pro User Login</label>
+          <input
+            type="text"
+            class="form-control"
+            name="proUserLogin"
+            id="field_proUserLogin"
+            data-cy="proUserLogin"
+            formControlName="proUserLogin"
+          />
+          <div
+            *ngIf="editForm.get('proUserLogin')!.invalid && (editForm.get('proUserLogin')!.dirty || editForm.get('proUserLogin')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('proUserLogin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.proUserPwd" for="field_proUserPwd">Pro User Pwd</label>
+          <input
+            type="text"
+            class="form-control"
+            name="proUserPwd"
+            id="field_proUserPwd"
+            data-cy="proUserPwd"
+            formControlName="proUserPwd"
+          />
+          <div *ngIf="editForm.get('proUserPwd')!.invalid && (editForm.get('proUserPwd')!.dirty || editForm.get('proUserPwd')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('proUserPwd')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.proUserEmail" for="field_proUserEmail">Pro User Email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="proUserEmail"
+            id="field_proUserEmail"
+            data-cy="proUserEmail"
+            formControlName="proUserEmail"
+          />
+          <div
+            *ngIf="editForm.get('proUserEmail')!.invalid && (editForm.get('proUserEmail')!.dirty || editForm.get('proUserEmail')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('proUserEmail')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.proUserPhoneNumber" for="field_proUserPhoneNumber"
+            >Pro User Phone Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="proUserPhoneNumber"
+            id="field_proUserPhoneNumber"
+            data-cy="proUserPhoneNumber"
+            formControlName="proUserPhoneNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('proUserPhoneNumber')!.invalid &&
+              (editForm.get('proUserPhoneNumber')!.dirty || editForm.get('proUserPhoneNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('proUserPhoneNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.isActivated" for="field_isActivated">Is Activated</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isActivated"
+            id="field_isActivated"
+            data-cy="isActivated"
+            formControlName="isActivated"
+          />
+          <div *ngIf="editForm.get('isActivated')!.invalid && (editForm.get('isActivated')!.dirty || editForm.get('isActivated')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('isActivated')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsSharedCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.proUser.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsSharedCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="proUser">
+      <h2 data-cy="proUserDetailsHeading"><span jhiTranslate="amidiappApp.proUser.detail.title">Pro User</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ proUser.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.proUserName">Pro User Name</span></dt>
+        <dd>
+          <span>{{ proUser.proUserName }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.proUserSurname">Pro User Surname</span></dt>
+        <dd>
+          <span>{{ proUser.proUserSurname }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.proUserRole">Pro User Role</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'amidiappApp.UserRole.' + proUser.proUserRole }}">{{ proUser.proUserRole }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.proUserLogin">Pro User Login</span></dt>
+        <dd>
+          <span>{{ proUser.proUserLogin }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.proUserPwd">Pro User Pwd</span></dt>
+        <dd>
+          <span>{{ proUser.proUserPwd }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.proUserEmail">Pro User Email</span></dt>
+        <dd>
+          <span>{{ proUser.proUserEmail }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.proUserPhoneNumber">Pro User Phone Number</span></dt>
+        <dd>
+          <span>{{ proUser.proUserPhoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.isActivated">Is Activated</span></dt>
+        <dd>
+          <span>{{ proUser.isActivated }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="proUser.restaurant">
+            <a [routerLink]="['/restaurant', proUser.restaurant?.id, 'view']">{{ proUser.restaurant?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.proUser.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="proUser.restaurant">
+            <a [routerLink]="['/restaurant', proUser.restaurant?.id, 'view']">{{ proUser.restaurant?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/pro-user', proUser.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

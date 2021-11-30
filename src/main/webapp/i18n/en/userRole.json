@@ -1,0 +1,9 @@
+{
+  "amidiappApp": {
+    "UserRole": {
+      "null": "",
+      "OWNER": "OWNER",
+      "USER": "USER"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "amidiappApp": {
+    "HedgeprodRole": {
+      "null": "",
+      "ADMIN": "ADMIN",
+      "DEV": "DEV",
+      "DEMO": "DEMO"
+    }
+  }
+}

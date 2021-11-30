@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-hedgeprod-heading" data-cy="HedgeprodCreateUpdateHeading" jhiTranslate="amidiappApp.hedgeprod.home.createOrEditLabel">
+        Create or edit a Hedgeprod
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.hedgeprod.hName" for="field_hName">H Name</label>
+          <input type="text" class="form-control" name="hName" id="field_hName" data-cy="hName" formControlName="hName" />
+          <div *ngIf="editForm.get('hName')!.invalid && (editForm.get('hName')!.dirty || editForm.get('hName')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('hName')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.hedgeprod.hSurname" for="field_hSurname">H Surname</label>
+          <input type="text" class="form-control" name="hSurname" id="field_hSurname" data-cy="hSurname" formControlName="hSurname" />
+          <div *ngIf="editForm.get('hSurname')!.invalid && (editForm.get('hSurname')!.dirty || editForm.get('hSurname')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('hSurname')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.hedgeprod.hRole" for="field_hRole">H Role</label>
+          <select class="form-control" name="hRole" formControlName="hRole" id="field_hRole" data-cy="hRole">
+            <option [ngValue]="null">{{ 'amidiappApp.HedgeprodRole.null' | translate }}</option>
+            <option *ngFor="let hedgeprodRole of hedgeprodRoleValues" [value]="hedgeprodRole">
+              {{ 'amidiappApp.HedgeprodRole.' + hedgeprodRole | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('hRole')!.invalid && (editForm.get('hRole')!.dirty || editForm.get('hRole')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('hRole')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.hedgeprod.hEmail" for="field_hEmail">H Email</label>
+          <input type="text" class="form-control" name="hEmail" id="field_hEmail" data-cy="hEmail" formControlName="hEmail" />
+          <div *ngIf="editForm.get('hEmail')!.invalid && (editForm.get('hEmail')!.dirty || editForm.get('hEmail')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('hEmail')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.hedgeprod.hPhoneNumber" for="field_hPhoneNumber"
+            >H Phone Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hPhoneNumber"
+            id="field_hPhoneNumber"
+            data-cy="hPhoneNumber"
+            formControlName="hPhoneNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.hedgeprod.isActivated" for="field_isActivated">Is Activated</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isActivated"
+            id="field_isActivated"
+            data-cy="isActivated"
+            formControlName="isActivated"
+          />
+          <div *ngIf="editForm.get('isActivated')!.invalid && (editForm.get('isActivated')!.dirty || editForm.get('isActivated')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('isActivated')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

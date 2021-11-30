@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="client">
+      <h2 data-cy="clientDetailsHeading"><span jhiTranslate="amidiappApp.client.detail.title">Client</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ client.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.name">Name</span></dt>
+        <dd>
+          <span>{{ client.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.surname">Surname</span></dt>
+        <dd>
+          <span>{{ client.surname }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.birthDate">Birth Date</span></dt>
+        <dd>
+          <span>{{ client.birthDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.email">Email</span></dt>
+        <dd>
+          <span>{{ client.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ client.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.clientLogin">Client Login</span></dt>
+        <dd>
+          <span>{{ client.clientLogin }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.clientPwd">Client Pwd</span></dt>
+        <dd>
+          <span>{{ client.clientPwd }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.isActivated">Is Activated</span></dt>
+        <dd>
+          <span>{{ client.isActivated }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.client.restaurant">Restaurant</span></dt>
+        <dd>
+          <span *ngFor="let restaurant of client.restaurants; let last = last">
+            <a [routerLink]="['/restaurant', restaurant?.id, 'view']">{{ restaurant.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/client', client.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

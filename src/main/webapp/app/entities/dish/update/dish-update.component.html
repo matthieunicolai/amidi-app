@@ -1,0 +1,255 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-dish-heading" data-cy="DishCreateUpdateHeading" jhiTranslate="amidiappApp.dish.home.createOrEditLabel">
+        Create or edit a Dish
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.dishName" for="field_dishName">Dish Name</label>
+          <input type="text" class="form-control" name="dishName" id="field_dishName" data-cy="dishName" formControlName="dishName" />
+          <div *ngIf="editForm.get('dishName')!.invalid && (editForm.get('dishName')!.dirty || editForm.get('dishName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dishName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.dishDescription" for="field_dishDescription"
+            >Dish Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="dishDescription"
+            id="field_dishDescription"
+            data-cy="dishDescription"
+            formControlName="dishDescription"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.dishPrice" for="field_dishPrice">Dish Price</label>
+          <input type="number" class="form-control" name="dishPrice" id="field_dishPrice" data-cy="dishPrice" formControlName="dishPrice" />
+          <div *ngIf="editForm.get('dishPrice')!.invalid && (editForm.get('dishPrice')!.dirty || editForm.get('dishPrice')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dishPrice')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dishPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.dishDate" for="field_dishDate">Dish Date</label>
+          <div class="d-flex">
+            <input
+              id="field_dishDate"
+              data-cy="dishDate"
+              type="datetime-local"
+              class="form-control"
+              name="dishDate"
+              formControlName="dishDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('dishDate')!.invalid && (editForm.get('dishDate')!.dirty || editForm.get('dishDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dishDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dishDate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.dishPictureName" for="field_dishPictureName"
+            >Dish Picture Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="dishPictureName"
+            id="field_dishPictureName"
+            data-cy="dishPictureName"
+            formControlName="dishPictureName"
+          />
+          <div
+            *ngIf="
+              editForm.get('dishPictureName')!.invalid &&
+              (editForm.get('dishPictureName')!.dirty || editForm.get('dishPictureName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dishPictureName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.dishPictureUrl" for="field_dishPictureUrl"
+            >Dish Picture Url</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="dishPictureUrl"
+            id="field_dishPictureUrl"
+            data-cy="dishPictureUrl"
+            formControlName="dishPictureUrl"
+          />
+          <div
+            *ngIf="
+              editForm.get('dishPictureUrl')!.invalid && (editForm.get('dishPictureUrl')!.dirty || editForm.get('dishPictureUrl')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dishPictureUrl')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.dishPictureAlt" for="field_dishPictureAlt"
+            >Dish Picture Alt</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="dishPictureAlt"
+            id="field_dishPictureAlt"
+            data-cy="dishPictureAlt"
+            formControlName="dishPictureAlt"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.isDailyDish" for="field_isDailyDish">Is Daily Dish</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isDailyDish"
+            id="field_isDailyDish"
+            data-cy="isDailyDish"
+            formControlName="isDailyDish"
+          />
+          <div *ngIf="editForm.get('isDailyDish')!.invalid && (editForm.get('isDailyDish')!.dirty || editForm.get('isDailyDish')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('isDailyDish')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.isAvailable" for="field_isAvailable">Is Available</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isAvailable"
+            id="field_isAvailable"
+            data-cy="isAvailable"
+            formControlName="isAvailable"
+          />
+          <div *ngIf="editForm.get('isAvailable')!.invalid && (editForm.get('isAvailable')!.dirty || editForm.get('isAvailable')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('isAvailable')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsSharedCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dish.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsSharedCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

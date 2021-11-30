@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="restaurant">
+      <h2 data-cy="restaurantDetailsHeading"><span jhiTranslate="amidiappApp.restaurant.detail.title">Restaurant</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ restaurant.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantName">Restaurant Name</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantName }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantAddress">Restaurant Address</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantAddressCmp">Restaurant Address Cmp</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantAddressCmp }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantType">Restaurant Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'amidiappApp.RestaurationType.' + restaurant.restaurantType }}">{{ restaurant.restaurantType }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.isSub">Is Sub</span></dt>
+        <dd>
+          <span>{{ restaurant.isSub }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantSubscription">Restaurant Subscription</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'amidiappApp.SubscriptionType.' + restaurant.restaurantSubscription }}">{{
+            restaurant.restaurantSubscription
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantSubDate">Restaurant Sub Date</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantSubDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantDescription">Restaurant Description</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantPhoneNumber">Restaurant Phone Number</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantPhoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantEmail">Restaurant Email</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantEmail }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantWebSite">Restaurant Web Site</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantWebSite }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantLatitude">Restaurant Latitude</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantLatitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.restaurantLongitude">Restaurant Longitude</span></dt>
+        <dd>
+          <span>{{ restaurant.restaurantLongitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.isActivated">Is Activated</span></dt>
+        <dd>
+          <span>{{ restaurant.isActivated }}</span>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.location">Location</span></dt>
+        <dd>
+          <div *ngIf="restaurant.location">
+            <a [routerLink]="['/location', restaurant.location?.id, 'view']">{{ restaurant.location?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amidiappApp.restaurant.location">Location</span></dt>
+        <dd>
+          <div *ngIf="restaurant.location">
+            <a [routerLink]="['/location', restaurant.location?.id, 'view']">{{ restaurant.location?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/restaurant', restaurant.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

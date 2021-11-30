@@ -1,0 +1,16 @@
+{
+  "amidiappApp": {
+    "RestaurationType": {
+      "null": "",
+      "BRASSERIE": "BRASSERIE",
+      "FASTFOOD": "FASTFOOD",
+      "RESTAURANT": "RESTAURANT",
+      "STREETFOOD": "STREETFOOD",
+      "FOODTRUCK": "FOODTRUCK",
+      "CAFETERIA": "CAFETERIA",
+      "GRILL": "GRILL",
+      "BOULANGERIE": "BOULANGERIE",
+      "PUB": "PUB"
+    }
+  }
+}

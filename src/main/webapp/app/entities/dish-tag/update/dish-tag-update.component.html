@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-dish-tag-heading" data-cy="DishTagCreateUpdateHeading" jhiTranslate="amidiappApp.dishTag.home.createOrEditLabel">
+        Create or edit a Dish Tag
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dishTag.dishTag" for="field_dishTag">Dish Tag</label>
+          <select class="form-control" name="dishTag" formControlName="dishTag" id="field_dishTag" data-cy="dishTag">
+            <option [ngValue]="null">{{ 'amidiappApp.FoodType.null' | translate }}</option>
+            <option *ngFor="let foodType of foodTypeValues" [value]="foodType">{{ 'amidiappApp.FoodType.' + foodType | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('dishTag')!.invalid && (editForm.get('dishTag')!.dirty || editForm.get('dishTag')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dishTag')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="amidiappApp.dishTag.dish" for="field_dish">Dish</label>
+          <select class="form-control" id="field_dish" data-cy="dish" name="dish" formControlName="dish">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="dishOption.id === editForm.get('dish')!.value?.id ? editForm.get('dish')!.value : dishOption"
+              *ngFor="let dishOption of dishesSharedCollection; trackBy: trackDishById"
+            >
+              {{ dishOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

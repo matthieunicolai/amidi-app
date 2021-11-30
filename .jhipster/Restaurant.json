@@ -1,0 +1,139 @@
+{
+  "name": "Restaurant",
+  "fields": [
+    {
+      "fieldName": "restaurantName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "restaurantAddress",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "restaurantAddressCmp",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "restaurantType",
+      "fieldType": "RestaurationType",
+      "fieldValues": "BRASSERIE,FASTFOOD,RESTAURANT,STREETFOOD,FOODTRUCK,CAFETERIA,GRILL,BOULANGERIE,PUB"
+    },
+    {
+      "fieldName": "isSub",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "restaurantSubscription",
+      "fieldType": "SubscriptionType",
+      "fieldValues": "SILVER,GOLD,PLATINIUM"
+    },
+    {
+      "fieldName": "restaurantSubDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "restaurantDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "restaurantPhoneNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "restaurantEmail",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "restaurantWebSite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "restaurantLatitude",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "restaurantLongitude",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isActivated",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "proUser",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "proUser"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "picture",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "picture"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dish",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "dish"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "location"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "location"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dish",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "dish"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "picture",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "picture"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "proUser",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "proUser"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "client",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "restaurant",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211130142905"
+}
