@@ -117,22 +117,9 @@ relationship OneToMany {
     Dish to DishTag
 }
 
-relationship ManyToOne {
-	Dish to Restaurant
-    Picture to Restaurant
-    Restaurant to Location
-    ProUser to Restaurant
-}
-
-
 paginate Dish with infinite-scroll
 
 
-// Use Data Transfer Objects (DTO)
-// dto * with mapstruct
-
-// Set service options to all except few
-
-service all with serviceImpl except Employee, Jo
+service all with serviceImpl
 
 
