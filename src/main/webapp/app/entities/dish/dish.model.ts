@@ -15,7 +15,6 @@ export interface IDish {
   isAvailable?: boolean;
   dishTags?: IDishTag[] | null;
   restaurant?: IRestaurant | null;
-  restaurant?: IRestaurant | null;
 }
 
 export class Dish implements IDish {
@@ -31,7 +30,6 @@ export class Dish implements IDish {
     public isDailyDish?: boolean,
     public isAvailable?: boolean,
     public dishTags?: IDishTag[] | null,
-    public restaurant?: IRestaurant | null,
     public restaurant?: IRestaurant | null
   ) {
     this.isDailyDish = this.isDailyDish ?? false;

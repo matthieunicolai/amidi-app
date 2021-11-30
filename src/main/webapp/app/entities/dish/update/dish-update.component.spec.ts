@@ -43,12 +43,10 @@ describe('Dish Management Update Component', () => {
       const dish: IDish = { id: 456 };
       const restaurant: IRestaurant = { id: 39778 };
       dish.restaurant = restaurant;
-      const restaurant: IRestaurant = { id: 17613 };
-      dish.restaurant = restaurant;
 
-      const restaurantCollection: IRestaurant[] = [{ id: 56738 }];
+      const restaurantCollection: IRestaurant[] = [{ id: 17613 }];
       jest.spyOn(restaurantService, 'query').mockReturnValue(of(new HttpResponse({ body: restaurantCollection })));
-      const additionalRestaurants = [restaurant, restaurant];
+      const additionalRestaurants = [restaurant];
       const expectedCollection: IRestaurant[] = [...additionalRestaurants, ...restaurantCollection];
       jest.spyOn(restaurantService, 'addRestaurantToCollectionIfMissing').mockReturnValue(expectedCollection);
 
@@ -62,16 +60,13 @@ describe('Dish Management Update Component', () => {
 
     it('Should update editForm', () => {
       const dish: IDish = { id: 456 };
-      const restaurant: IRestaurant = { id: 78459 };
-      dish.restaurant = restaurant;
-      const restaurant: IRestaurant = { id: 62808 };
+      const restaurant: IRestaurant = { id: 56738 };
       dish.restaurant = restaurant;
 
       activatedRoute.data = of({ dish });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(dish));
-      expect(comp.restaurantsSharedCollection).toContain(restaurant);
       expect(comp.restaurantsSharedCollection).toContain(restaurant);
     });
   });

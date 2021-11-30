@@ -49,12 +49,6 @@
       "otherEntityName": "restaurant",
       "otherEntityRelationshipName": "proUser",
       "relationshipName": "restaurant"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "restaurant",
-      "otherEntityRelationshipName": "proUser",
-      "relationshipName": "restaurant"
     }
   ],
   "entityTableName": "pro_user",

@@ -8,7 +8,6 @@ export interface IPicture {
   isLogo?: boolean;
   isDisplayed?: boolean;
   restaurant?: IRestaurant | null;
-  restaurant?: IRestaurant | null;
 }
 
 export class Picture implements IPicture {
@@ -19,7 +18,6 @@ export class Picture implements IPicture {
     public pictureAlt?: string,
     public isLogo?: boolean,
     public isDisplayed?: boolean,
-    public restaurant?: IRestaurant | null,
     public restaurant?: IRestaurant | null
   ) {
     this.isLogo = this.isLogo ?? false;

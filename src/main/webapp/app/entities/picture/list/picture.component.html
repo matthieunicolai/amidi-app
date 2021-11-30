@@ -64,7 +64,6 @@
           <th scope="col"><span jhiTranslate="amidiappApp.picture.isLogo">Is Logo</span></th>
           <th scope="col"><span jhiTranslate="amidiappApp.picture.isDisplayed">Is Displayed</span></th>
           <th scope="col"><span jhiTranslate="amidiappApp.picture.restaurant">Restaurant</span></th>
-          <th scope="col"><span jhiTranslate="amidiappApp.picture.restaurant">Restaurant</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -78,11 +77,6 @@
           <td>{{ picture.pictureAlt }}</td>
           <td>{{ picture.isLogo }}</td>
           <td>{{ picture.isDisplayed }}</td>
-          <td>
-            <div *ngIf="picture.restaurant">
-              <a [routerLink]="['/restaurant', picture.restaurant?.id, 'view']">{{ picture.restaurant?.id }}</a>
-            </div>
-          </td>
           <td>
             <div *ngIf="picture.restaurant">
               <a [routerLink]="['/restaurant', picture.restaurant?.id, 'view']">{{ picture.restaurant?.id }}</a>

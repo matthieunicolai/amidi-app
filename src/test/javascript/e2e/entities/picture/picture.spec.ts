@@ -49,7 +49,6 @@ describe('Picture e2e test', () => {
       pictureUpdatePage.getIsLogoInput().click(),
       pictureUpdatePage.getIsDisplayedInput().click(),
       pictureUpdatePage.restaurantSelectLastOption(),
-      pictureUpdatePage.restaurantSelectLastOption(),
     ]);
 
     await pictureUpdatePage.save();

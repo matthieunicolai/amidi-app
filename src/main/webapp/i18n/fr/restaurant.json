@@ -37,10 +37,6 @@
       "picture": "Picture",
       "dish": "Dish",
       "location": "Location",
-      "location": "Location",
-      "dish": "Dish",
-      "picture": "Picture",
-      "proUser": "Pro User",
       "client": "Client"
     }
   }

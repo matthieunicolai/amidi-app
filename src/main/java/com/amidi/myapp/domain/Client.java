@@ -64,10 +64,7 @@ public class Client implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "restaurant_id")
     )
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(
-        value = { "proUsers", "pictures", "dishes", "location", "location", "dishes", "pictures", "proUsers", "clients" },
-        allowSetters = true
-    )
+    @JsonIgnoreProperties(value = { "proUsers", "pictures", "dishes", "location", "clients" }, allowSetters = true)
     private Set<Restaurant> restaurants = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

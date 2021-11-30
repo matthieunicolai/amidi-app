@@ -59,19 +59,7 @@ public class ProUser implements Serializable {
     private Boolean isActivated;
 
     @ManyToOne
-    @ManyToOne
-    @JsonIgnoreProperties(
-        value = { "proUsers", "pictures", "dishes", "location", "location", "dishes", "pictures", "proUsers", "clients" },
-        allowSetters = true
-    )
-    private Restaurant restaurant;
-
-    @ManyToOne
-    @ManyToOne
-    @JsonIgnoreProperties(
-        value = { "proUsers", "pictures", "dishes", "location", "location", "dishes", "pictures", "proUsers", "clients" },
-        allowSetters = true
-    )
+    @JsonIgnoreProperties(value = { "proUsers", "pictures", "dishes", "location", "clients" }, allowSetters = true)
     private Restaurant restaurant;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -191,19 +179,6 @@ public class ProUser implements Serializable {
 
     public void setIsActivated(Boolean isActivated) {
         this.isActivated = isActivated;
-    }
-
-    public Restaurant getRestaurant() {
-        return this.restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
-    public ProUser restaurant(Restaurant restaurant) {
-        this.setRestaurant(restaurant);
-        return this;
     }
 
     public Restaurant getRestaurant() {

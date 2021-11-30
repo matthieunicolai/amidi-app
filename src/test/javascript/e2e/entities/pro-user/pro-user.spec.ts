@@ -52,7 +52,6 @@ describe('ProUser e2e test', () => {
       proUserUpdatePage.setProUserPhoneNumberInput('proUserPhoneNumber'),
       proUserUpdatePage.getIsActivatedInput().click(),
       proUserUpdatePage.restaurantSelectLastOption(),
-      proUserUpdatePage.restaurantSelectLastOption(),
     ]);
 
     await proUserUpdatePage.save();

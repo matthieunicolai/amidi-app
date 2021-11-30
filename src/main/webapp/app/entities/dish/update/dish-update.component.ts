@@ -34,7 +34,6 @@ export class DishUpdateComponent implements OnInit {
     isDailyDish: [null, [Validators.required]],
     isAvailable: [null, [Validators.required]],
     restaurant: [],
-    restaurant: [],
   });
 
   constructor(
@@ -107,12 +106,10 @@ export class DishUpdateComponent implements OnInit {
       isDailyDish: dish.isDailyDish,
       isAvailable: dish.isAvailable,
       restaurant: dish.restaurant,
-      restaurant: dish.restaurant,
     });
 
     this.restaurantsSharedCollection = this.restaurantService.addRestaurantToCollectionIfMissing(
       this.restaurantsSharedCollection,
-      dish.restaurant,
       dish.restaurant
     );
   }
@@ -123,11 +120,7 @@ export class DishUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IRestaurant[]>) => res.body ?? []))
       .pipe(
         map((restaurants: IRestaurant[]) =>
-          this.restaurantService.addRestaurantToCollectionIfMissing(
-            restaurants,
-            this.editForm.get('restaurant')!.value,
-            this.editForm.get('restaurant')!.value
-          )
+          this.restaurantService.addRestaurantToCollectionIfMissing(restaurants, this.editForm.get('restaurant')!.value)
         )
       )
       .subscribe((restaurants: IRestaurant[]) => (this.restaurantsSharedCollection = restaurants));
@@ -146,7 +139,6 @@ export class DishUpdateComponent implements OnInit {
       dishPictureAlt: this.editForm.get(['dishPictureAlt'])!.value,
       isDailyDish: this.editForm.get(['isDailyDish'])!.value,
       isAvailable: this.editForm.get(['isAvailable'])!.value,
-      restaurant: this.editForm.get(['restaurant'])!.value,
       restaurant: this.editForm.get(['restaurant'])!.value,
     };
   }

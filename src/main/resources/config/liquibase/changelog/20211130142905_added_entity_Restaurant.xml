@@ -59,9 +59,6 @@
             <column name="location_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="location_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="restaurant" columnName="restaurant_sub_date" columnDataType="${datetimeType}"/>

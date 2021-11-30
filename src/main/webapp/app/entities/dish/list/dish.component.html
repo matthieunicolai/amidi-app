@@ -92,9 +92,6 @@
           <th scope="col" jhiSortBy="restaurant.id">
             <span jhiTranslate="amidiappApp.dish.restaurant">Restaurant</span> <fa-icon icon="sort"></fa-icon>
           </th>
-          <th scope="col" jhiSortBy="restaurant.id">
-            <span jhiTranslate="amidiappApp.dish.restaurant">Restaurant</span> <fa-icon icon="sort"></fa-icon>
-          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -112,11 +109,6 @@
           <td>{{ dish.dishPictureAlt }}</td>
           <td>{{ dish.isDailyDish }}</td>
           <td>{{ dish.isAvailable }}</td>
-          <td>
-            <div *ngIf="dish.restaurant">
-              <a [routerLink]="['/restaurant', dish.restaurant?.id, 'view']">{{ dish.restaurant?.id }}</a>
-            </div>
-          </td>
           <td>
             <div *ngIf="dish.restaurant">
               <a [routerLink]="['/restaurant', dish.restaurant?.id, 'view']">{{ dish.restaurant?.id }}</a>

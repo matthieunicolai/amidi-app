@@ -33,12 +33,6 @@
       "otherEntityName": "restaurant",
       "otherEntityRelationshipName": "picture",
       "relationshipName": "restaurant"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "restaurant",
-      "otherEntityRelationshipName": "picture",
-      "relationshipName": "restaurant"
     }
   ],
   "entityTableName": "picture",

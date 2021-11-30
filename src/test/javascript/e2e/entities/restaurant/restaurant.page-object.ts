@@ -46,7 +46,6 @@ export class RestaurantUpdatePage {
   isActivatedInput = element(by.id('field_isActivated'));
 
   locationSelect = element(by.id('field_location'));
-  locationSelect = element(by.id('field_location'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -170,22 +169,6 @@ export class RestaurantUpdatePage {
 
   getIsActivatedInput(): ElementFinder {
     return this.isActivatedInput;
-  }
-
-  async locationSelectLastOption(): Promise<void> {
-    await this.locationSelect.all(by.tagName('option')).last().click();
-  }
-
-  async locationSelectOption(option: string): Promise<void> {
-    await this.locationSelect.sendKeys(option);
-  }
-
-  getLocationSelect(): ElementFinder {
-    return this.locationSelect;
-  }
-
-  async getLocationSelectedOption(): Promise<string> {
-    return await this.locationSelect.element(by.css('option:checked')).getText();
   }
 
   async locationSelectLastOption(): Promise<void> {

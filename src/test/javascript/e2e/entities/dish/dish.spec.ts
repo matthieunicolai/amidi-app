@@ -53,7 +53,6 @@ describe('Dish e2e test', () => {
       dishUpdatePage.getIsDailyDishInput().click(),
       dishUpdatePage.getIsAvailableInput().click(),
       dishUpdatePage.restaurantSelectLastOption(),
-      dishUpdatePage.restaurantSelectLastOption(),
     ]);
 
     await dishUpdatePage.save();
